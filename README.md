@@ -6,9 +6,7 @@
 
 2. cd JVMInternals/OutOfMemProject
 
-3. mvn clean install
-
-4. mvn exec:java -Dexec.mainClass="App"
+3. mvn install exec:java
 
 
 Wyjaœnienie:
