@@ -11,11 +11,11 @@ public class JSONConverter {
 				return true;
 		return false;
 	}
-	
+
 	public static String objToJSON(Object o) throws IllegalArgumentException, IllegalAccessException
 	{
 		StringBuilder res = new StringBuilder();
-		res.append("{\n");
+		res.append("{");
 		for(Field fld : o.getClass().getDeclaredFields())
 		{
 			fld.setAccessible(true);
@@ -25,9 +25,9 @@ public class JSONConverter {
 			if(isPri(fld) || fld.get(o).getClass().isEnum())
 				res.append(fld.get(o));
 			else if(fld.get(o) == null)
-				res.append("null");	
+				res.append("null");
 			else if(fld.get(o).getClass().getName()=="java.util.ArrayList" || fld.get(o).getClass().getName()=="java.util.LinkedList")
-			{			
+			{
 				res.append("[");
 				for(Object i : (List)fld.get(o))
 				{
@@ -44,7 +44,7 @@ public class JSONConverter {
 			}
 			else if(fld.get(o).getClass().isArray())
 			{
-				res.append("{");
+				res.append("[");
 				for(int i=0;i<Array.getLength(fld.get(o));i++)
 				{
 					if(Array.get(fld.get(o),i).getClass().getName()=="java.lang.Integer")
@@ -56,9 +56,9 @@ public class JSONConverter {
 						res.append(",");
 				}
 				res.setLength(res.length() - 1);
-				res.append("}");
-			}				
-			res.append(",\n");
+				res.append("]");
+			}
+			res.append(",");
 		}
 		res.append("}");
 		return res.toString();
