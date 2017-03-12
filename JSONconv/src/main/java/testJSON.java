@@ -10,20 +10,6 @@ import java.util.Random;
 
 
 public class testJSON {
-	private String replStrJSON(String x)
-	{
-		x = x.replace(",","");
-		//x = x.replace("{", "");
-		//x = x.replace("}", "");
-		//x = x.replace("[","");
-		//x = x.replace("]", "");
-		x = x.replace("\"", "");
-		//x = x.replace("\n", "");
-		x = x.replace(" ", "");
-
-		return x;
-	}
-
 	@Test
 	public void testAAAAA() throws ClassNotFoundException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, InstantiationException
 	{
@@ -68,6 +54,6 @@ public class testJSON {
 		String jsonConvStr = conv.objToJSON(aa);
 		String gsonConvStr = gson.toJson(aa);
 
-		assertEquals(replStrJSON(jsonConvStr),replStrJSON(gsonConvStr));
+		assertEquals(jsonConvStr,gsonConvStr);
 	}
 }
