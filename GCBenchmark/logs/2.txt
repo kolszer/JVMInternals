@@ -1,0 +1,98 @@
+-Xmx128m -Xms128m
+-XX:+UseParallelOldGC
+1 thread static alloc
+405
+1 thread dynamic alloc
+366
+8 thread static alloc
+94299
+8 thread dynamic alloc
+49936
+==================================
+-Xmx128m -Xms128m
+-XX:+UseConcMarkSweepGC
+1 thread static alloc
+619
+1 thread dynamic alloc
+194
+8 thread static alloc
+54508
+8 thread dynamic alloc
+34029
+==================================
+-Xmx128m -Xms128m
+-XX:+UseG1GC
+1 thread static alloc
+556
+1 thread dynamic alloc
+417
+8 thread static alloc
+31525
+8 thread dynamic alloc
+20749
+======================================================
+-Xmx512m -Xms512m
+-XX:+UseParallelOldGC
+1 thread static alloc
+376
+1 thread dynamic alloc
+266
+8 thread static alloc
+8693
+8 thread dynamic alloc
+936
+==================================
+-Xmx512m -Xms512m
+-XX:+UseConcMarkSweepGC
+1 thread static alloc
+626
+1 thread dynamic alloc
+585
+8 thread static alloc
+8149
+8 thread dynamic alloc
+1484
+==================================
+-Xmx512m -Xms512m
+-XX:+UseG1GC
+1 thread static alloc
+483
+1 thread dynamic alloc
+227
+8 thread static alloc
+4903
+8 thread dynamic alloc
+1895
+======================================================
+-Xmx1024m -Xms1024m
+-XX:+UseParallelOldGC
+1 thread static alloc
+522
+1 thread dynamic alloc
+234
+8 thread static alloc
+1947
+8 thread dynamic alloc
+814
+==================================
+-Xmx1024m -Xms1024m
+-XX:+UseConcMarkSweepGC
+1 thread static alloc
+365
+1 thread dynamic alloc
+276
+8 thread static alloc
+3168
+8 thread dynamic alloc
+1304
+==================================
+-Xmx1024m -Xms1024m
+-XX:+UseG1GC
+1 thread static alloc
+753
+1 thread dynamic alloc
+502
+8 thread static alloc
+2730
+8 thread dynamic alloc
+1809
