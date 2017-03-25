@@ -1,16 +1,56 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class App {
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");;
 	public static void main(String[] args)  {
-		ExecutorService executorService = Executors.newFixedThreadPool(4);
-		//SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-        	for (int i = 0; i < 4; i++) {
-        		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-            		Runnable worker = new SDThread(i+1,format);
-            		executorService.execute(worker);
-        	}
-		executorService.shutdown();
+		System.out.println("safeThr(): ");
+		safeThr();
+		System.out.println("unSafeThr(): ");
+		unSafeThr();
+	}	
+	
+	public static void safeThr()
+	{
+	    ExecutorService executor = Executors.newFixedThreadPool(16);
+	    for (int i = 0; i < 16; i++) {
+	        executor.submit(new Runnable() {
+	            public void run() {
+	            	Date date = new Date();
+	                try {
+	                	synchronized(sdf){
+	                		System.out.println(sdf.parse("12/11/2006"));
+	                	}
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+	            }
+	        });
+	    }
+	    executor.shutdown();
+        while (!executor.isTerminated()) {}
+	}
+	
+	
+	public static void unSafeThr()
+	{
+	    ExecutorService executor = Executors.newFixedThreadPool(16);
+	    for (int i = 0; i < 16; i++) {
+	        executor.submit(new Runnable() {
+	            public void run() {
+	            	Date date = new Date();
+	                try {
+						System.out.println(sdf.parse("12/11/2006"));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+	            }
+	        });
+	    }
+	    executor.shutdown();
+        while (!executor.isTerminated()) {}
 	}
 }
