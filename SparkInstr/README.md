@@ -4,12 +4,6 @@
 
 1. git clone git@github.com:kolszer/JVMInternals.git
 
-2. cd JVMInternals/SparkInstr/my-app
+2. cd JVMInternals/SparkInstr
 
-3. mvn install
-
-4. W celu zmiany wyswietlania czasu wykonywania metody na przekazywane parametry
-nalezy odkomentowac/zakomentowac w myAgent.java:
--Dla czasu: inst.addTransformer(new TimeTransformer());
-
--Dla parametrow: inst.addTransformer(new ParameterTransformer());
+3. mvn install exec:exec
